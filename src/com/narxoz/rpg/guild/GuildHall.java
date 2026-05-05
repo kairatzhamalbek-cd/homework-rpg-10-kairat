@@ -16,14 +16,17 @@ public class GuildHall implements GuildMediator {
             addSubscriber("orders", member);
             addSubscriber("urgent", member);
         } else if (member instanceof Quartermaster) {
+            addSubscriber("orders", member);
             addSubscriber("supplies", member);
             addSubscriber("rewards", member);
         } else if (member instanceof Scout) {
             addSubscriber("scouting", member);
             addSubscriber("urgent", member);
+            addSubscriber("orders", member);
         } else if (member instanceof Healer) {
             addSubscriber("healing", member);
             addSubscriber("urgent", member);
+            addSubscriber("orders", member);
         }
         else if (member instanceof Loremaster) {
             addSubscriber("lore", member);
