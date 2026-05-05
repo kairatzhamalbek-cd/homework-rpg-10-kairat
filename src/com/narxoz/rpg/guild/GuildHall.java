@@ -25,6 +25,11 @@ public class GuildHall implements GuildMediator {
             addSubscriber("healing", member);
             addSubscriber("urgent", member);
         }
+        else if (member instanceof Loremaster) {
+            addSubscriber("lore", member);
+            addSubscriber("scouting", member);
+            addSubscriber("urgent", member);
+        }
     }
 
     @Override
@@ -36,9 +41,10 @@ public class GuildHall implements GuildMediator {
 
         for (GuildMember member : subscribers) {
             if (member != from) {
-            member.receive(topic, from, payload);
+                member.receive(topic, from, payload);
+            }
         }
-        }  }
+    }
 
     protected void addSubscriber(String topic, GuildMember member) {
         membersByTopic.computeIfAbsent(topic, key -> new ArrayList<>()).add(member);
